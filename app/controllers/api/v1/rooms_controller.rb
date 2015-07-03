@@ -1,6 +1,5 @@
 class Api::V1::RoomsController < ApplicationController
 
-  before_action [:set_room]
   # @url /api/v1/rooms/create
   # @action POST
   #
@@ -23,6 +22,7 @@ class Api::V1::RoomsController < ApplicationController
   end
 
   def show
+    @room = Room.find(params[:id])
     @room.users << @user
     Pusher['room' + @room.id].trigger('my_event', @room.users.to_json)
     render json: @room.users, status: :created
@@ -48,9 +48,5 @@ class Api::V1::RoomsController < ApplicationController
 
   def params_model
     params.require(:message).permit(:score)
-  end
-
-  def set_room
-    @room = Room.find(params[:id])
   end
 end
