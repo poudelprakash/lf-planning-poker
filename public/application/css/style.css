@@ -11,3 +11,20 @@ md-toolbar {
 .full-height {
   height: 100%;
 }
+
+
+/* SIDENAV */
+
+.sidenav-list i {
+  display: block;
+  margin: 0 15px 0 5px;
+  color: #212121;
+}
+
+.sidenav-list md-list-item:hover {
+  background: #9E9E9E;
+}
+
+.sidenav-list md-list-item.active {
+  background: #9E9E9E;
+}

@@ -6,14 +6,26 @@
 
   .config(function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/dashboard');
+    $urlRouterProvider.otherwise('/lobby');
 
     $stateProvider
 
-    .state('dashboard', {
-      url: '/dashboard',
-      templateUrl: 'application/dashboard/dashboard.html',
-      controller: "DashboardController"
+    .state('lobby', {
+      url: '/lobby',
+      templateUrl: 'application/lobby/lobby.html',
+      controller: "LobbyController"
+    })
+
+    .state('room', {
+      url: '/room',
+      templateUrl: 'application/room/roomIndex.html',
+      controller: "RoomController"
+    })
+
+    .state('roomCreate', {
+      url: '/room/new',
+      templateUrl: 'application/room/roomCreate.html',
+      controller: "RoomCreateController"
     })
 
   });
