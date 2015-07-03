@@ -21,6 +21,13 @@
       }));
     };
 
+    factory.getRoomDetails = function(id) {
+      return ($http({
+        method: 'GET',
+        url: RESOURCES.apiURL + 'room/' + id
+      }));
+    };
+
     return factory;
   };
   RoomFactory.$inject = ['$http', 'RESOURCES'];
