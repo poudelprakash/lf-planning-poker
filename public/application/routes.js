@@ -10,6 +10,12 @@
 
     $stateProvider
 
+    .state('login', {
+      url: '/login',
+      templateUrl: 'application/login/login.html',
+      controller: "LogInController"
+    })
+
     .state('lobby', {
       url: '/lobby',
       templateUrl: 'application/lobby/lobby.html',
