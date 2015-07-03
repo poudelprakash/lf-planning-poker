@@ -51,8 +51,18 @@ class Api::V1::RoomsController < ApplicationController
 
   def flip_card
     room = Room.find(params[:id])
-    Pusher["room#{room.id}"].trigger('card_values', @user.to_json)
+    Pusher["room#{room.id}"].trigger('card_values', room.users.all.to_json)
     render json: 'cards displayed'
+  end
+
+  def reset_cards
+    room = Room.find(params[:id])
+    users = room.users
+    users.each do |user|
+      user.update!(holding_card: '')
+    end
+    Pusher["room#{room.id}"].trigger('reset_game', room.users.all.to_json)
+    render json: 'cards reset completed'
   end
 
   private
