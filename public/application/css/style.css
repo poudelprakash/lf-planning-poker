@@ -30,9 +30,9 @@ md-toolbar {
 }
 
 .not-taken i{
-  color: red !important;
+  color: red;
 }
 
 .taken i{
-  color: green !important;
+  color: green;
 }
