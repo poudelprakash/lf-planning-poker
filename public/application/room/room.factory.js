@@ -24,7 +24,14 @@
     factory.getRoomDetails = function(id) {
       return ($http({
         method: 'GET',
-        url: RESOURCES.apiURL + 'room/' + id
+        url: RESOURCES.apiURL + 'rooms/' + id
+      }));
+    };
+
+    factory.selectCard = function(id, cardValue) {
+      return ($http({
+        method: 'GET',
+        url: RESOURCES.apiURL + 'rooms/' + id + '/hold_card?card=' + cardValue
       }));
     };
 

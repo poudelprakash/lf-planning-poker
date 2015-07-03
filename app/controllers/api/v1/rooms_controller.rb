@@ -24,7 +24,7 @@ class Api::V1::RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     @room.users << @user
-    Pusher['room' + @room.id].trigger('my_event', @room.users.to_json)
+    Pusher["room#{@room.id}"].trigger('changedUser', @room.users.to_json)
     render json: @room.users, status: :created
   end
 
@@ -41,6 +41,14 @@ class Api::V1::RoomsController < ApplicationController
     @rooms = Room.all
   end
 
+  def hold_card
+    room = Room.find(params[:id])
+    card_value = params[:card]
+    @user.update!(holding_card: card_value)
+    Pusher["room#{room.id}"].trigger('user_id', @user.id)
+    render json: "updated holding card"
+  end
+
   private
   def room_params
     params.require(:room).permit(:name)
@@ -49,4 +57,5 @@ class Api::V1::RoomsController < ApplicationController
   def params_model
     params.require(:message).permit(:score)
   end
+
 end
