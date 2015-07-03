@@ -8,7 +8,7 @@
     $scope.createRoom= function() {
       RoomFactory.createRoom($scope.room)
       .success(function() {
-        $state.go('room');
+        $state.go('lobby');
       })
       .error(function() {
         window.alert("Error connecting to server");

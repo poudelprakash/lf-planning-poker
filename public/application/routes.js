@@ -29,7 +29,7 @@
     })
 
     .state('roomCreate', {
-      url: '/room/new',
+      url: '/rooms/new',
       templateUrl: 'application/room/roomCreate.html',
       controller: "RoomCreateController"
     })
