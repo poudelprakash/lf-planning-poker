@@ -24,7 +24,7 @@
     factory.getRoomDetails = function(id) {
       return ($http({
         method: 'GET',
-        url: RESOURCES.apiURL + 'room/' + id
+        url: RESOURCES.apiURL + 'rooms/' + id
       }));
     };
 
