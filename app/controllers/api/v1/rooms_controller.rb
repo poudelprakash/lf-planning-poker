@@ -15,7 +15,8 @@ class Api::V1::RoomsController < ApplicationController
   def create
     room = Room.new room_params
     if room.save!
-      render json: {success: true, message: t(:room_created_successfully)}, channel:room.id,  status: 200
+      @user.moderator!
+      render json: {success: true, message: t(:room_created_successfully)}, status: 200
     else
       render json: {success: false, error: t(:room_could_not_be_created)}, status: 400
     end
@@ -29,7 +30,7 @@ class Api::V1::RoomsController < ApplicationController
 
   # @url /api/v1/rooms
   # @action Get
-  #
+  #Moderator
   # lists all rooms
   #
   # @example_response

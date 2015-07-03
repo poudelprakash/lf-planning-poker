@@ -1,24 +1,34 @@
 ;(function(){
   "use strict";
 
-  var RoomController = function($scope) {
+  var RoomController = function($scope, $stateParams, RoomFactory) {
 
-    Pusher.log = function(message) {
-      if (window.console && window.console.log) {
-        window.console.log(message);
-      }
-    };
+    RoomFactory.getRoomDetails($stateParams.roomId)
+    .success(function(data) {
+      $scope.room = data;
 
-    var pusher = new Pusher('7beb69d6b286bbc5e6fb', {
-      encrypted: true
-    });
-    var channel = pusher.subscribe('test_channel');
-    channel.bind('my_event', function(data) {
-      alert(data.message);
+      Pusher.log = function(message) {
+        if (window.console && window.console.log) {
+          window.console.log(message);
+        }
+      };
+
+      var pusher = new Pusher('7beb69d6b286bbc5e6fb', {
+        encrypted: true
+      });
+
+      var channel = pusher.subscribe('room' + $stateParams.roomId);
+      channel.bind('my_event', function(data) {
+        alert(JSON.stringify(data.message));
+      });
+
+    })
+    .error(function() {
+      window.alert("Error connecting to server");
     });
 
   };
-  RoomController.$inject = ['$scope'];
+  RoomController.$inject = ['$scope', '$stateParams', 'RoomFactory'];
 
   angular
   .module('testTemplate')
