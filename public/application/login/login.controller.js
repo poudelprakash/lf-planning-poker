@@ -18,8 +18,7 @@
         $localStorage.userInfo = {
           name: data.name,
           photo: data.image_url,
-          email: data.email,
-          role: data.role
+          email: data.email
         }
         $scope.signedIn = true;
         succesfulLogin();
