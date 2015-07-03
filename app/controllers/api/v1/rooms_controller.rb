@@ -1,5 +1,6 @@
 class Api::V1::RoomsController < ApplicationController
 
+  before_action [:set_room]
   # @url /api/v1/rooms/create
   # @action POST
   #
@@ -14,10 +15,16 @@ class Api::V1::RoomsController < ApplicationController
   def create
     room = Room.new room_params
     if room.save!
-      render json: {success: true, message: t(:room_created_successfully)}, status: 200
+      render json: {success: true, message: t(:room_created_successfully)}, channel:room.id,  status: 200
     else
       render json: {success: false, error: t(:room_could_not_be_created)}, status: 400
     end
+  end
+
+  def show
+    @room.users << @user
+    Pusher['room' + @room.id].trigger('my_event', @room.users.to_json)
+    render json: @room.users, status: :created
   end
 
   # @url /api/v1/rooms
@@ -40,5 +47,9 @@ class Api::V1::RoomsController < ApplicationController
 
   def params_model
     params.require(:message).permit(:score)
+  end
+
+  def set_room
+    @room = Room.find(params[:id])
   end
 end
