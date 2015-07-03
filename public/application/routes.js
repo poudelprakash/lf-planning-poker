@@ -23,8 +23,8 @@
     })
 
     .state('room', {
-      url: '/room',
-      templateUrl: 'application/room/roomIndex.html',
+      url: '/room/:roomId',
+      templateUrl: 'application/room/room.html',
       controller: "RoomController"
     })
 
