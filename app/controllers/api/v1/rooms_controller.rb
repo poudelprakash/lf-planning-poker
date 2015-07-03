@@ -49,6 +49,12 @@ class Api::V1::RoomsController < ApplicationController
     render json: "updated holding card"
   end
 
+  def flip_card
+    room = Room.find(params[:id])
+    Pusher["room#{room.id}"].trigger('card_values', @user.to_json)
+    render json: 'cards displayed'
+  end
+
   private
   def room_params
     params.require(:room).permit(:name)
