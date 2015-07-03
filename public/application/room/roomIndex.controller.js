@@ -13,6 +13,16 @@
       window.alert("Error connecting to server");
     });
 
+    $scope.selectCard = function() {
+      RoomFactory.selectCard($stateParams.roomId, 5)
+      .success(function(data) {
+        console.log(data);
+      })
+      .error(function() {
+        window.alert("Error connecting to server");
+      })
+    }
+
     var pusher = new Pusher('7beb69d6b286bbc5e6fb', {
       encrypted: true
     });

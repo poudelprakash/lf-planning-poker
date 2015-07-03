@@ -38,7 +38,7 @@
         <md-content layout-padding>
           <md-list class="primary-text sidenav-list">
 
-            <md-list-item class="md-2-line" ng-repeat="user in users" flex>
+            <md-list-item ng-click="selectCard()" class="md-2-line" ng-repeat="user in users" flex>
               <img ng-src="{{user.image_url}}" class="md-avatar" alt="{{user.name}}" />
               <div layout="row" flex>
                 <h3>{{user.name}}</h3>

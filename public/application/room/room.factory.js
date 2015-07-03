@@ -28,6 +28,13 @@
       }));
     };
 
+    factory.selectCard = function(id, cardValue) {
+      return ($http({
+        method: 'GET',
+        url: RESOURCES.apiURL + 'rooms/' + id + '/hold_card?card=' + cardValue
+      }));
+    };
+
     return factory;
   };
   RoomFactory.$inject = ['$http', 'RESOURCES'];

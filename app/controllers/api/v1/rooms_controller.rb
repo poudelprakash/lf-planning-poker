@@ -41,6 +41,14 @@ class Api::V1::RoomsController < ApplicationController
     @rooms = Room.all
   end
 
+  def hold_card
+    room = Room.find(params[:id])
+    card_value = params[:card]
+    @user.update!(holding_card: card_value)
+    Pusher["room#{room.id}"].trigger('user_id', @user.id)
+    render json: "updated holding card"
+  end
+
   private
   def room_params
     params.require(:room).permit(:name)
