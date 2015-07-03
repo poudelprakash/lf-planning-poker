@@ -10,17 +10,21 @@
 
       <md-content class="md-padding" flex>
 
-        <md-card class="md-padding">
+        <md-card class="md-padding" layout="row" layout-align="center center">
           Ticket Details
+          <md-button ng-click="flipCard" class="md-fab md-mini md-primary">
+            <i class="fa fa-home"></i>
+          </md-button>
         </md-card>
 
         <md-card class="md-padding">
 
-          <md-grid-list ng-click="selectCard()"
+          <md-grid-list
           md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
           md-row-height-gt-md="1:1" md-row-height="2:2"
           md-gutter="12px" md-gutter-gt-sm="8px" >
-            <md-grid-tile class="accent" ng-repeat="item in [1,2,3,4,5,6,7,8]"
+            <md-grid-tile class="accent" ng-repeat="item in [1,2,3,5,8,13,20]"
+                          ng-click="selectCard(item)"
                           md-rowspan="1" md-colspan="1">
             </md-grid-tile>
           </md-grid-list>

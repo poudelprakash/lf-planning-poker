@@ -35,6 +35,13 @@
       }));
     };
 
+    factory.flipCard = function(id) {
+      return ($http({
+        method: 'GET',
+        url: RESOURCES.apiURL + 'rooms/' + id + '/flip_card'
+      }));
+    };
+
     return factory;
   };
   RoomFactory.$inject = ['$http', 'RESOURCES'];
