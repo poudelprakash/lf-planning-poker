@@ -28,3 +28,11 @@ md-toolbar {
 .sidenav-list md-list-item.active {
   background: #9E9E9E;
 }
+
+.not-taken i{
+  color: red !important;
+}
+
+.taken i{
+  color: green !important;
+}

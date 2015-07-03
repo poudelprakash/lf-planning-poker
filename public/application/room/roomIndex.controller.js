@@ -28,9 +28,9 @@
       .success(function(data) {
         console.log(data);
       })
-      .error(function() {
-        window.alert("Error connecting to server");
-      })
+      .error(function(){
+        //TODO: FIX ERROR HERE
+      });
     };
 
     var pusher = new Pusher('7beb69d6b286bbc5e6fb', {
@@ -44,15 +44,23 @@
       });
     });
 
-    channel.bind('user_id', function(response) {
+    channel.bind('changedUser', function(response) {
       $scope.$apply(function () {
         console.log(response);
       });
     });
 
-    channel.bind('changedUser', function(response) {
+    channel.bind('user_id', function(response) {
       $scope.$apply(function () {
-        console.log(response);
+        $scope.users = response;
+      });
+    });
+
+    $scope.cardsFlipped = false;
+    channel.bind('card_values', function(response) {
+      $scope.$apply(function () {
+        $scope.cardsFlipped = true;
+        $scope.users = response;
       });
     });
 

@@ -10,9 +10,10 @@
 
       <md-content class="md-padding" flex>
 
-        <md-card class="md-padding" layout="row" layout-align="center center">
+        <md-card class="md-padding" layout="row" layout-align="start center">
           Ticket Details
-          <md-button ng-click="flipCard" class="md-fab md-mini md-primary">
+          <span flex></span>
+          <md-button ng-click="flipCard()" class="md-fab md-mini md-primary">
             <i class="fa fa-home"></i>
           </md-button>
         </md-card>
@@ -40,15 +41,20 @@
           <h1 class="md-toolbar-tools">Participants</h1>
         </md-toolbar>
         <md-content layout-padding>
+
           <md-list class="primary-text sidenav-list">
 
             <md-list-item class="md-2-line" ng-repeat="user in users" flex>
+
               <img ng-src="{{user.image_url}}" class="md-avatar" alt="{{user.name}}" />
               <div layout="row" flex>
                 <h3>{{user.name}}</h3>
                 <span flex></span>
-                <md-button class="md-fab md-mini md-accent">
-                  7
+                <md-button ng-hide="cardsFlipped" ng-class="user.holding_card == null ? 'not-taken' : 'taken' " class="md-icon-button">
+                  <i class="fa fa-circle"></i>
+                </md-button>
+                <md-button ng-show="cardsFlipped" class="md-fab md-mini md-accent">
+                  {{user.holding_card}}
                 </md-button>
               </div>
             </md-list-item>
