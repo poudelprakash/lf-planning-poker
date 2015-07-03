@@ -57,6 +57,16 @@ class Api::V1::RoomsController < ApplicationController
     end
   end
 
+  def reset_cards
+    room = Room.find(params[:id])
+    users = room.users
+    users.each do |user|
+      user.update!(holding_card: '')
+    end
+    Pusher["room#{room.id}"].trigger('reset_game', room.users.all.to_json)
+    render json: 'cards reset completed'
+  end
+
   private
   def room_params
     params.require(:room).permit(:name)
