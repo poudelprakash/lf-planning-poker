@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       resources :messages
+
+      resources :users do
+        collection do
+          get :user_info
+        end
+      end
     end
   end
 
@@ -59,12 +65,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  resources :users do
-    collection do
-      get :user_info
-    end
-  end
 
   root controller: 'static', action: '/'
 end
