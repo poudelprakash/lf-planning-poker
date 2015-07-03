@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       resources :messages
+      resources :users do
+        collection do
+          get :user_info
+        end
+      end
     end
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -60,11 +66,6 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  resources :users do
-    collection do
-      get :user_info
-    end
-  end
 
   root controller: 'static', action: '/'
 end
