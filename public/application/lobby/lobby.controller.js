@@ -6,6 +6,7 @@
     RoomFactory.listRooms()
     .success(function(data) {
       $scope.projects = data;
+      console.log($scope.projects);
     })
     .error(function() {
       window.alert("Error connecting to server");
