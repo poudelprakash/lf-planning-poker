@@ -14,6 +14,11 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Pusher API for integrating bi-directional functionality.
+gem 'pusher'
+
+gem 'pry-rails'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -29,6 +34,9 @@ gem 'shoulda-matchers', require: false
 gem 'factory_girl_rails'
 gem 'faker'
 gem 'capybara'
+
+gem 'google-api-client', '>= 0.6.2', :require => 'google/api_client'
+gem 'httparty'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

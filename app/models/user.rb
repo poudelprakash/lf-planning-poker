@@ -1,5 +1,15 @@
 class User < ActiveRecord::Base
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: :true, uniqueness: true, format: {with: VALID_EMAIL_REGEX}
-  belongs_to :room
+
+  def self.find_for_verified_token_response(auth)
+    user = User.where(:provider => "google_oauth2", :uid => auth[:id]).first
+
+    unless user
+      user = User.create(name: auth[:name],
+      email: auth[:email],
+      image_url: auth[:picture],
+      provider: "google_oauth2",
+      uid: auth[:id])
+    end
+    user
+  end
 end

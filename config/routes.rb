@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :messages
+      resources :users do
+        collection do
+          get :user_info
+        end
+      end
+    end
+
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,60 @@
+<section class="full-height" layout="row" flex>
+
+  <div class="full-height" data-ng-include src="'application/shared/sideNav/sideNav.html'"></div>
+
+  <md-content class="full-height" layout="column" flex>
+
+    <div ng-include layout="column" src="'application/shared/header/header.html'"></div>
+
+    <div class="light-primary md-padding" layout="row" flex>
+
+      <md-content class="md-padding" flex>
+
+        <md-card class="md-padding">
+          Ticket Details
+        </md-card>
+
+        <md-card class="md-padding">
+
+          <md-grid-list
+          md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
+          md-row-height-gt-md="1:1" md-row-height="2:2"
+          md-gutter="12px" md-gutter-gt-sm="8px" >
+            <md-grid-tile class="accent" ng-repeat="item in [1,2,3,4,5,6,7,8]"
+                          md-rowspan="1" md-colspan="1">
+            </md-grid-tile>
+          </md-grid-list>
+
+        </md-card>
+
+      </md-content>
+
+      <md-sidenav class="md-sidenav-right md-whiteframe-z2"
+                  md-component-id="right" md-is-locked-open="true">
+        <md-toolbar layout="row" layout-align="start center">
+          <i class="fa fa-user md-padding"></i>
+          <h1 class="md-toolbar-tools">Participants</h1>
+        </md-toolbar>
+        <md-content layout-padding>
+          <md-list class="primary-text sidenav-list">
+
+            <md-list-item class="md-2-line" ng-repeat="item in [1,2,3,4,5,6,7,8,9]" flex>
+              <img ng-src="asdasd" class="md-avatar" alt="{{item.who}}" />
+              <div layout="row" flex>
+                <h3>Sudhir Shrestha</h3>
+                <span flex></span>
+                <md-button class="md-fab md-mini md-accent">
+                  7
+                </md-button>
+              </div>
+            </md-list-item>
+
+          </md-list>
+        </md-content>
+      </md-sidenav>
+
+    </div>
+
+  </md-content>
+
+</section>
