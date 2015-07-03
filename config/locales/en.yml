@@ -21,3 +21,5 @@
 
 en:
   hello: "Hello world"
+  room_created_successfully: "Room created successfully"
+  room_could_not_be_created: "Room could not be created"
