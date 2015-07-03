@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :rooms do
         member do
+          get :flip_card
           get :hold_card
         end
       end
