@@ -1,0 +1,31 @@
+.dark-primary {
+   background-color: #5D4037;
+}
+
+.primary {
+  background-color: #795548;
+}
+
+.light-primary {
+  background-color: #D7CCC8;
+}
+
+.accent {
+  background-color: #9E9E9E;
+}
+
+.text {
+  color : #FFFFFF;
+}
+
+.primary-text {
+  color: #212121;
+}
+
+.secondary-text {
+  color: #727272;
+}
+
+.divider {
+  color: #B6B6B6;
+}
