@@ -1,0 +1,33 @@
+<section class="full-height" layout="row" flex>
+
+  <div class="full-height" data-ng-include src="'application/shared/sideNav/sideNav.html'"></div>
+
+  <md-content class="full-height" layout="column" flex>
+
+    <div ng-include layout="column" src="'application/shared/header/header.html'"></div>
+
+    <md-content class="light-primary md-padding" layout="column" flex>
+
+        <md-card class="accent" layout="row" layout-align="center center">
+          <h2 class="md-title md-padding">
+            Projects
+          </h2>
+          <span flex></span>
+          <md-button class="md-primary md-mini md-fab">
+            <i class="fa fa-plus"></i>
+          </md-button>
+        </md-card>
+
+        <md-list class="md-padding">
+          <md-list-item ng-repeat="item in [1,2,3,4,5,6,7,8,9]">
+            <img alt="{{ person.name }}" src="asd" class="md-avatar" />
+            <p>Project Name</p>
+            <i class="fa fa-car" class="md-secondary md-hue-3"></i>
+          </md-list-item>
+        </md-list>
+
+    </md-content>
+
+  </md-content>
+
+</section>

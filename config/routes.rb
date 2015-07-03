@@ -60,5 +60,11 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
+  resources :users do
+    collection do
+      get :user_info
+    end
+  end
+
   root controller: 'static', action: '/'
 end

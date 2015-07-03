@@ -35,6 +35,8 @@ gem 'factory_girl_rails'
 gem 'faker'
 gem 'capybara'
 
+gem 'google-api-client', '>= 0.6.2', :require => 'google/api_client'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
