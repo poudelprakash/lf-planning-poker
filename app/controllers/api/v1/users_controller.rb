@@ -8,5 +8,6 @@ class Api::V1::UsersController < ApplicationController
     card_value = params[:card]
     user.update!(holding_card: card_value)
     Pusher['room' + room.id].trigger('user_id', user.id)
+    render json: "updated holding card"
   end
 end
