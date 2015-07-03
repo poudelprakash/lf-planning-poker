@@ -42,6 +42,13 @@
       }));
     };
 
+    factory.resetCards = function(id) {
+      return ($http({
+        method: 'GET',
+        url: RESOURCES.apiURL + 'rooms/' + id + '/reset_cards'
+      }));
+    };
+
     return factory;
   };
   RoomFactory.$inject = ['$http', 'RESOURCES'];

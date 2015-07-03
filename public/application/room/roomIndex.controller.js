@@ -33,6 +33,16 @@
       });
     };
 
+    $scope.resetCards = function() {
+      RoomFactory.resetCards($stateParams.roomId)
+      .success(function(data) {
+        console.log(data);
+      })
+      .error(function(){
+        //TODO: FIX ERROR HERE
+      });
+    };
+
     var pusher = new Pusher('7beb69d6b286bbc5e6fb', {
       encrypted: true
     });
@@ -61,6 +71,13 @@
       $scope.$apply(function () {
         $scope.cardsFlipped = true;
         $scope.users = response;
+      });
+    });
+
+    channel.bind('reset_game', function(response) {
+      $scope.$apply(function () {
+        $scope.users = response;
+        $scope.cardsFlipped = false;
       });
     });
 
