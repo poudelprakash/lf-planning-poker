@@ -18,9 +18,7 @@
       .success(function(data) {
         console.log(data);
       })
-      .error(function() {
-        window.alert("Error connecting to server");
-      })
+      //TODO: FIX ERROR HERE
     }
 
     var pusher = new Pusher('7beb69d6b286bbc5e6fb', {

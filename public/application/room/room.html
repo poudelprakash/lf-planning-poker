@@ -16,7 +16,7 @@
 
         <md-card class="md-padding">
 
-          <md-grid-list
+          <md-grid-list ng-click="selectCard()"
           md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
           md-row-height-gt-md="1:1" md-row-height="2:2"
           md-gutter="12px" md-gutter-gt-sm="8px" >
@@ -38,7 +38,7 @@
         <md-content layout-padding>
           <md-list class="primary-text sidenav-list">
 
-            <md-list-item ng-click="selectCard()" class="md-2-line" ng-repeat="user in users" flex>
+            <md-list-item class="md-2-line" ng-repeat="user in users" flex>
               <img ng-src="{{user.image_url}}" class="md-avatar" alt="{{user.name}}" />
               <div layout="row" flex>
                 <h3>{{user.name}}</h3>
