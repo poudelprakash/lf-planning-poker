@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+  enum role: [:moderator, :general]
   belongs_to :room
 
   def self.find_for_verified_token_response(auth)
