@@ -1,10 +1,22 @@
 ;(function(){
   "use strict";
 
-  var RoomCreateController = function($scope) {
+  var RoomCreateController = function($scope, $state, RoomFactory) {
+
+    $scope.room = {};
+
+    $scope.createRoom= function() {
+      RoomFactory.createRoom($scope.room)
+      .success(function() {
+        $state.go('room');
+      })
+      .error(function() {
+        window.alert("Error connecting to server");
+      });
+    };
 
   };
-  RoomCreateController.$inject = ['$scope'];
+  RoomCreateController.$inject = ['$scope', '$state', 'RoomFactory'];
 
   angular
   .module('testTemplate')

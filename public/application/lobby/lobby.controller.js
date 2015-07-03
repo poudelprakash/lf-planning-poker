@@ -1,13 +1,25 @@
 ;(function(){
   "use strict";
 
-  var LobbyController = function($scope) {
+  var LobbyController = function($scope, $state, RoomFactory) {
 
-  }
-  LobbyController.$inject = ['$scope'];
+    RoomFactory.listRooms()
+    .success(function(data) {
+      $scope.projects = data;
+    })
+    .error(function() {
+      window.alert("Error connecting to server");
+    });
+
+    $scope.createRoom = function() {
+      $state.go('roomCreate');
+    }
+
+  };
+  LobbyController.$inject = ['$scope', '$state', 'RoomFactory'];
 
   angular
   .module('testTemplate')
-  .controller('LobbyController', LobbyController)
+  .controller('LobbyController', LobbyController);
 
 })()
