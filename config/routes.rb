@@ -13,13 +13,8 @@ Rails.application.routes.draw do
           end
         end
       end
-      resources :messages
       resources :users do
-        collection do
-          get :user_info
-        end
       end
-      resources :issues
     end
 
   end

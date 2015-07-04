@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Story, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe(:validation) do
+    subject { build(:story) }
+    it { is_expected.to belong_to(:room) }
+  end
 end
