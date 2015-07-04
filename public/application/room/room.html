@@ -49,7 +49,7 @@
             <p>{{selectedStory.description}}</p>
           </div>
           <div ng-show="userInfo.role == 'moderator'">
-            <md-button ng-click="setStoryPoint()" class="md-whiteframe-z5 md-fab md-mini md-primary">
+            <md-button ng-click="confirmStoryPoint($event)" class="md-whiteframe-z5 md-fab md-mini md-primary">
               <i class="fa fa-bars"></i>
             </md-button>
             <md-button ng-click="resetCards()" class="md-whiteframe-z5 md-fab md-mini md-primary">
