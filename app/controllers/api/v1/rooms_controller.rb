@@ -1,5 +1,4 @@
 class Api::V1::RoomsController < ApplicationController
-
   # @url /api/v1/rooms/create
   # @action POST
   #
@@ -15,9 +14,7 @@ class Api::V1::RoomsController < ApplicationController
     room = Room.new room_params
     if room.save!
       @user.moderator!
-      10.times do |i|
-        room.stories.create(title: "title #{i}", description: "description #{i}")
-      end
+      Story.all_issues(room, params[:project_name])
       render json: {success: true, message: t(:room_created_successfully), stories: room.stories.to_json}, status: 200
     else
       render json: {success: false, error: t(:room_could_not_be_created)}, status: 400

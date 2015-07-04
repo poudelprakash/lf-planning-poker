@@ -91,7 +91,7 @@
   LogInController.$inject = ['$scope', '$state', '$http', '$localStorage', 'LogInFactory'];
 
   angular
-  .module('testTemplate')
+  .module('planningPoker')
   .controller('LogInController', LogInController)
 
 })()

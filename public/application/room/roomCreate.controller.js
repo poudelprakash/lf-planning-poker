@@ -19,7 +19,7 @@
   RoomCreateController.$inject = ['$scope', '$state', 'RoomFactory'];
 
   angular
-  .module('testTemplate')
+  .module('planningPoker')
   .controller('RoomCreateController', RoomCreateController)
 
 })()

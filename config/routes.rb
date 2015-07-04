@@ -19,7 +19,6 @@ Rails.application.routes.draw do
           get :user_info
         end
       end
-      resources :issues
     end
 
   end

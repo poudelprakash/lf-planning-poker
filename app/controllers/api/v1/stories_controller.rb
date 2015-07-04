@@ -1,4 +1,8 @@
 class StoriesController < ApplicationController
+  belongs_to :room
+  def index
+    render json: Stories.all
+  end
 
   def assign_point
     story = Story.find(params[:id])

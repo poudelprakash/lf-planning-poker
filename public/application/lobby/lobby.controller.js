@@ -19,7 +19,7 @@
   LobbyController.$inject = ['$scope', '$state', 'RoomFactory'];
 
   angular
-  .module('testTemplate')
+  .module('planningPoker')
   .controller('LobbyController', LobbyController);
 
 })()

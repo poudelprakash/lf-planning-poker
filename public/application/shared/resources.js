@@ -9,7 +9,7 @@
   }
 
   angular
-  .module('testTemplate')
+  .module('planningPoker')
   .constant('RESOURCES', Resources());
 
 })();
