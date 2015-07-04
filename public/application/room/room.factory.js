@@ -16,7 +16,8 @@
         method: 'POST',
         url: RESOURCES.apiURL + 'rooms',
         data: {
-          room: room
+          room: room.room,
+          project_name: room.project_name
         }
       }));
     };
@@ -68,7 +69,7 @@
   RoomFactory.$inject = ['$http', 'RESOURCES'];
 
   angular
-  .module('testTemplate')
+  .module('planningPoker')
   .factory('RoomFactory', RoomFactory)
 
 })()

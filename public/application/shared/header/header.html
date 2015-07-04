@@ -1,6 +1,7 @@
-<md-toolbar class="md-whiteframe-z1" layout="row" layout-align="start center">
+<md-toolbar class="md-whiteframe-z1" layout="row" layout-align="start center" ng-controller="HeaderController">
   <span flex></span>
-  <md-button class="md-icon-button" aria-label="Navigation">
+  <img class="logo-image" src="application/resources/logo.png"/>
+  <md-button class="md-icon-button" ng-click="confirmLogOut($event)" aria-label="Navigation">
     <i class="fa fa-sign-out"></i>
   </md-button>
 </md-toolbar>

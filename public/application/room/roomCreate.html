@@ -15,8 +15,13 @@
 
       <md-card layout="column" class="md-padding">
         <md-input-container flex>
+          <label>Room Name</label>
+          <input ng-model="roomInfo.room.name">
+        </md-input-container>
+
+        <md-input-container flex>
           <label>Project Name</label>
-          <input ng-model="room.name">
+          <input ng-model="roomInfo.project_name">
         </md-input-container>
 
         <div layout="row" layout-align="end center">

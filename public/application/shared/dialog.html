@@ -1,0 +1,28 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Story point</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="hide()">
+          <i class="fa fa-close"></i>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div layout="column">
+        Please enter the finalized story point
+     <md-select ng-model="finalStoryPoint">
+       <md-option class="light-primary" ng-repeat="number in [0,1,2,3,5,8,13,20,40,100]" value="{{number}}">
+         {{number}}
+       </md-option>
+     </md-select>
+      </div>
+    </md-dialog-content>
+    <div class="md-actions" layout="row" layout-align="center end">
+      <md-button ng-click="submit()">
+        Submit
+      </md-button>
+    </div>
+  </form>
+</md-dialog>

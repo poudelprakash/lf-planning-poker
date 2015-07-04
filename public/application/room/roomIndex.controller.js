@@ -1,7 +1,7 @@
 ;(function(){
   "use strict";
 
-  var RoomController = function($scope, $stateParams, $localStorage, RoomFactory) {
+  var RoomController = function($scope, $stateParams, $localStorage, $mdDialog,  RoomFactory) {
 
     $scope.userInfo = $localStorage.userInfo;
     $scope.selectedStoryIndex = 0;
@@ -25,13 +25,20 @@
       //TODO: FIX ERROR HERE
     });
 
-    $scope.setStoryPoint = function() {
-      RoomFactory.setStoryPoint($stateParams.roomId, $scope.selectedStory.id, 5)
-      .success(function(data) {
-        console.log(data);
-      })
-      .error(function() {
-        //TODO: FIX ERROR HERE
+    $scope.confirmStoryPoint = function(ev) {
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'application/shared/dialog.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        scope: $scope.$new()
+      });
+    };
+
+    $scope.setStoryPoint = function(storyPoint) {
+      RoomFactory.setStoryPoint($stateParams.roomId, $scope.selectedStory.id, storyPoint)
+      .success(function(response) {
+        $scope.stories = response;
       })
     };
 
@@ -104,15 +111,21 @@
     channel.bind('reset_game', function(response) {
       $scope.$apply(function () {
         $scope.users = response;
+        $scope.cardsFlipped = false;
+      });
+    });
 
+    channel.bind('story_point_assigned', function(response) {
+      $scope.$apply(function () {
+        $scope.stories = response;
       });
     });
 
   };
-  RoomController.$inject = ['$scope', '$stateParams', '$localStorage', 'RoomFactory'];
+  RoomController.$inject = ['$scope', '$stateParams', '$localStorage', '$mdDialog', 'RoomFactory'];
 
   angular
-  .module('testTemplate')
+  .module('planningPoker')
   .controller('RoomController', RoomController)
 
 })()
