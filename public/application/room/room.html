@@ -2,7 +2,7 @@
 
   <md-sidenav class="full-height primary md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
 
-    <md-toolbar layout="row" layout-align="start center">
+    <md-toolbar class="md-whiteframe-z1" layout="row" layout-align="start center">
       <md-button class="md-icon-button" aria-label="Navigation">
         <i class="fa fa-list"></i>
       </md-button>
@@ -10,9 +10,9 @@
 
     <md-content layout="column" class="full-height">
 
-      <div layout="column" layout-align="center center">
-        <md-list-item class="md-2-line">
-          <img ng-src="userInfo.image_url" class="md-avatar" />
+      <div class="md-padding" layout="column" layout-align="center center">
+        <md-list-item class="md-2-line md-padding">
+          <img ng-src="{{userInfo.photo}}" class="md-avatar" />
         </md-list-item>
         <p class="text">{{userInfo.name}}</p>
       </div>
@@ -49,10 +49,13 @@
             <p>{{selectedStory.description}}</p>
           </div>
           <div ng-show="userInfo.role == 'moderator'">
-            <md-button ng-click="resetCards()" class="md-fab md-mini md-primary">
+            <md-button ng-click="setStoryPoint()" class="md-whiteframe-z5 md-fab md-mini md-primary">
+              <i class="fa fa-bars"></i>
+            </md-button>
+            <md-button ng-click="resetCards()" class="md-whiteframe-z5 md-fab md-mini md-primary">
               <i class="fa fa-car"></i>
             </md-button>
-            <md-button ng-click="flipCard()" class="md-fab md-mini md-primary">
+            <md-button ng-click="flipCard()" class="md-whiteframe-z5 md-fab md-mini md-primary">
               <i class="fa fa-home"></i>
             </md-button>
           </div>
@@ -64,7 +67,7 @@
           md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
           md-row-height-gt-md="1:1" md-row-height="2:2"
           md-gutter="12px" md-gutter-gt-sm="8px" >
-            <md-grid-tile class="accent" ng-repeat="item in [0,0.5,1,2,3,5,8,13,20,40,100]"
+            <md-grid-tile class="text primary" ng-repeat="item in [0,0.5,1,2,3,5,8,13,20,40,100]"
                           ng-click="selectCard(item)"
                           md-rowspan="1" md-colspan="1">
               {{item}}
@@ -77,7 +80,7 @@
 
       <md-sidenav class="md-sidenav-right md-whiteframe-z2"
                   md-component-id="right" md-is-locked-open="true">
-        <md-toolbar layout="row" layout-align="start center">
+        <md-toolbar class="md-whiteframe-z1" layout="row" layout-align="start center">
           <i class="fa fa-user md-padding"></i>
           <h1 class="md-toolbar-tools">Participants</h1>
         </md-toolbar>

@@ -23,7 +23,17 @@
     })
     .error(function(){
       //TODO: FIX ERROR HERE
-    })
+    });
+
+    $scope.setStoryPoint = function() {
+      RoomFactory.setStoryPoint($stateParams.roomId, $scope.selectedStory.id, 5)
+      .success(function(data) {
+        console.log(data);
+      })
+      .error(function() {
+        //TODO: FIX ERROR HERE
+      })
+    };
 
     $scope.changeStory = function(index) {
       $scope.selectedStoryIndex = index;
