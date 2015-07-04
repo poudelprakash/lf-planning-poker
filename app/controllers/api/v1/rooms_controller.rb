@@ -21,11 +21,33 @@ class Api::V1::RoomsController < ApplicationController
     end
   end
 
+  # @url /api/v1/rooms/:id
+  # @action GET
+  #
+  # show the lists of users in a room
+  #
+  # @example_response
+  # ```
+  # [
+  #  {
+  #     "id":1,
+  #     "name": Ram,
+  #     "uid": 111111111111111111111111111111,
+  #     "email: ram@gmail.com"
+  #  },
+  #  {
+  #     "id":2,
+  #     "name": Shyam,
+  #     "uid": 2222222222222222222222222222222,
+  #     "email: shyam@gmail.com"
+  #  },
+  # .....
+  # ]
   def show
     @room = Room.find(params[:id])
     @room.users << @user
     Pusher["room#{@room.id}"].trigger('changedUser', @room.users.to_json)
-    render json: @room.users, status: :created
+    render json: @room.users, status: 200
   end
 
   # @url /api/v1/rooms
