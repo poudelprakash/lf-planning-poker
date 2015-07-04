@@ -23,3 +23,4 @@ en:
   hello: "Hello world"
   room_created_successfully: "Room created successfully"
   room_could_not_be_created: "Room could not be created"
+  story_point_update: "Story point was assigned to story"
