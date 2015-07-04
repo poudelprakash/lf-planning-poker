@@ -9,7 +9,7 @@
   MaterialTheme.$inject = ['$mdThemingProvider'];
 
   angular
-  .module('testTemplate')
+  .module('planningPoker')
   .config(MaterialTheme);
 
 })();

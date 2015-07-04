@@ -112,7 +112,7 @@
   RoomController.$inject = ['$scope', '$stateParams', '$localStorage', 'RoomFactory'];
 
   angular
-  .module('testTemplate')
+  .module('planningPoker')
   .controller('RoomController', RoomController)
 
 })()

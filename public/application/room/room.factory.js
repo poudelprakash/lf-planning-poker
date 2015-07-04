@@ -68,7 +68,7 @@
   RoomFactory.$inject = ['$http', 'RESOURCES'];
 
   angular
-  .module('testTemplate')
+  .module('planningPoker')
   .factory('RoomFactory', RoomFactory)
 
 })()
