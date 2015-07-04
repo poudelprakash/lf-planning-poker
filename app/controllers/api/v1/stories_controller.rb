@@ -1,3 +1,4 @@
+
 class Api::V1::StoriesController < ApplicationController
 
   def index
@@ -5,6 +6,7 @@ class Api::V1::StoriesController < ApplicationController
     stories = room.stories
     render json: stories.to_json
   end
+
 
   def assign_point
     story = Story.find(params[:id])
