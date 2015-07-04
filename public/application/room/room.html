@@ -1,6 +1,34 @@
 <section class="full-height" layout="row" flex>
 
-  <div class="full-height" data-ng-include src="'application/shared/sideNav/sideNav.html'"></div>
+  <md-sidenav class="full-height primary md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+
+    <md-toolbar layout="row" layout-align="start center">
+      <md-button class="md-icon-button" aria-label="Navigation">
+        <i class="fa fa-list"></i>
+      </md-button>
+    </md-toolbar>
+
+    <md-content layout="column" class="full-height">
+
+      <div layout="column" layout-align="center center">
+        <md-list-item class="md-2-line">
+          <img ng-src="adasd" class="md-avatar" alt="{{item.who}}" />
+        </md-list-item>
+        <p class="text">Sudhir Shrestha</p>
+      </div>
+
+      <div layout="column">
+        <md-list class="text sidenav-list">
+          <md-list-item class="active" ng-repeat="story in stories">
+            <i class="fa fa-car"></i>
+            <p>story</p>
+            <md-divider></md-divider>
+          </md-list-item>
+        </md-list>
+      </div>
+    </md-content>
+  </md-sidenav>
+
 
   <md-content class="full-height" layout="column" flex>
 

@@ -3,6 +3,8 @@
 
   var RoomController = function($scope, $stateParams, RoomFactory) {
 
+    $scope.users = [];
+
     RoomFactory.getRoomDetails($stateParams.roomId)
     .success(function(data) {
       $scope.users = data;
@@ -10,6 +12,15 @@
     .error(function() {
       window.alert("Error connecting to server");
     });
+
+    RoomFactory.getStories($stateParams.roomId)
+    .success(function(data) {
+      $scope.stories = data;
+      console.log(data)
+    })
+    .error(function(){
+      //TODO: FIX ERROR HERE
+    })
 
     $scope.selectCard = function(selectedCard) {
       RoomFactory.selectCard($stateParams.roomId, selectedCard)
@@ -75,7 +86,7 @@
     channel.bind('reset_game', function(response) {
       $scope.$apply(function () {
         $scope.users = response;
-        $scope.cardsFlipped = false;
+
       });
     });
 
