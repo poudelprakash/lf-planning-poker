@@ -21,10 +21,22 @@ md-toolbar {
   color: #212121;
 }
 
+.sidenav-list md-list-item {
+  border-bottom: 2px solid #5D4037;
+}
+
 .sidenav-list md-list-item:hover {
   background: #9E9E9E;
 }
 
 .sidenav-list md-list-item.active {
   background: #9E9E9E;
+}
+
+.not-taken i{
+  color: red;
+}
+
+.taken i{
+  color: green;
 }

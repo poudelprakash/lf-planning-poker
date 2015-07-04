@@ -7,7 +7,7 @@ Rails.application.routes.draw do
           get :flip_card
           get :hold_card
           resources :stories do
-            collection do
+            member do
               get :assign_point
             end
           end

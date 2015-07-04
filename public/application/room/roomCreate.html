@@ -1,12 +1,10 @@
-<section class="full-height" layout="row" flex>
+<section class="full-height" layout="column" flex>
 
-  <div class="full-height" data-ng-include src="'application/shared/sideNav/sideNav.html'"></div>
+  <div ng-include layout="column" src="'application/shared/header/header.html'"></div>
 
-  <md-content class="full-height" layout="column" flex>
+  <md-content class="light-primary md-padding" layout="row" layout-align="center start" flex>
 
-    <div ng-include layout="column" src="'application/shared/header/header.html'"></div>
-
-    <md-content class="light-primary md-padding" layout="column" flex>
+    <div layout="column" flex flex-sm="100" flex-gt-sm="95" flex-gt-md="80" class="md-padding">
 
       <md-card class="accent text" layout="row" layout-align="center center">
         <h2 class="md-title md-padding">
@@ -15,7 +13,7 @@
         <span flex></span>
       </md-card>
 
-      <div layout="column" class="md-padding">
+      <md-card layout="column" class="md-padding">
         <md-input-container flex>
           <label>Project Name</label>
           <input ng-model="room.name">
@@ -27,10 +25,8 @@
             Add Project
           </md-button>
         </div>
-      </div>
+      </md-card>
 
+   </div>
     </md-content>
-
-  </md-content>
-
-</section>
+  </section>

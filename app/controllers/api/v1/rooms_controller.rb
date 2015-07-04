@@ -15,7 +15,7 @@ class Api::V1::RoomsController < ApplicationController
     room = Room.new room_params
     if room.save!
       @user.moderator!
-      10.times do |i|
+      5.times do |i|
         room.stories.create(title: "title #{i}", description: "description #{i}")
       end
       render json: {success: true, message: t(:room_created_successfully), stories: room.stories.to_json}, status: 200
@@ -48,14 +48,16 @@ class Api::V1::RoomsController < ApplicationController
     room = Room.find(params[:id])
     card_value = params[:card]
     @user.update!(holding_card: card_value)
-    Pusher["room#{room.id}"].trigger('user_id', @user.id)
     render json: "updated holding card"
+    Pusher["room#{room.id}"].trigger('user_id', room.users.to_json)
   end
 
   def flip_card
     room = Room.find(params[:id])
-    Pusher["room#{room.id}"].trigger('card_values', room.users.all.to_json)
     render json: 'cards displayed'
+    if @user.moderator?
+      Pusher["room#{room.id}"].trigger('card_values', room.users.to_json)
+    end
   end
 
   def reset_cards
