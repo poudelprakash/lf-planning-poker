@@ -111,7 +111,7 @@
     channel.bind('reset_game', function(response) {
       $scope.$apply(function () {
         $scope.users = response;
-
+        $scope.cardsFlipped = false;
       });
     });
 
