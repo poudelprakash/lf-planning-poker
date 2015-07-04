@@ -15,10 +15,12 @@
       LogInFactory.getUserInfo(authInfo)
       .success(function(data) {
         $localStorage.accessToken = authInfo['access_token'];
+        console.log(data)
         $localStorage.userInfo = {
           name: data.name,
           photo: data.image_url,
-          email: data.email
+          email: data.email,
+          role: data.role
         }
         $scope.signedIn = true;
         succesfulLogin();

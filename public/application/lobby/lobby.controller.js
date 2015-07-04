@@ -13,8 +13,11 @@
 
     $scope.createRoom = function() {
       $state.go('roomCreate');
-    }
+    };
 
+    $scope.goToRoom = function(data) {
+      $state.go('room',{'roomId': data});
+    };
   };
   LobbyController.$inject = ['$scope', '$state', 'RoomFactory'];
 

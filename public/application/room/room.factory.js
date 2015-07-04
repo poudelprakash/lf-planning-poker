@@ -35,6 +35,34 @@
       }));
     };
 
+    factory.flipCard = function(id) {
+      return ($http({
+        method: 'GET',
+        url: RESOURCES.apiURL + 'rooms/' + id + '/flip_card'
+      }));
+    };
+
+    factory.resetCards = function(id) {
+      return ($http({
+        method: 'GET',
+        url: RESOURCES.apiURL + 'rooms/' + id + '/reset_cards'
+      }));
+    };
+
+    factory.getStories = function(id) {
+      return ($http({
+        method: 'GET',
+        url: RESOURCES.apiURL + 'rooms/' + id + '/stories'
+      }));
+    };
+
+    factory.setStoryPoint = function(roomId, storyId, point) {
+      return ($http({
+        method: 'GET',
+        url: RESOURCES.apiURL + 'rooms/' + roomId + '/stories/' + storyId + '/assign_point?story_point=' + point
+      }));
+    };
+
     return factory;
   };
   RoomFactory.$inject = ['$http', 'RESOURCES'];

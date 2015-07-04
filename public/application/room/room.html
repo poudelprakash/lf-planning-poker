@@ -1,6 +1,39 @@
 <section class="full-height" layout="row" flex>
 
-  <div class="full-height" data-ng-include src="'application/shared/sideNav/sideNav.html'"></div>
+  <md-sidenav class="full-height primary md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+
+    <md-toolbar class="md-whiteframe-z1" layout="row" layout-align="start center">
+      <md-button class="md-icon-button" aria-label="Navigation">
+        <i class="fa fa-list"></i>
+      </md-button>
+    </md-toolbar>
+
+    <md-content layout="column" class="full-height">
+
+      <div class="md-padding" layout="column" layout-align="center center">
+        <md-list-item class="md-2-line md-padding">
+          <img ng-src="{{userInfo.photo}}" class="md-avatar" />
+        </md-list-item>
+        <p class="text">{{userInfo.name}}</p>
+      </div>
+
+      <div layout="column">
+        <md-list class="text sidenav-list md-padding">
+          <md-list-item ng-repeat="story in stories track by $index" ng-class="{'active': ($index == selectedStoryIndex)}" ng-click="changeStory($index)" flex>
+            <div layout="row" layout-align="start center" flex>
+            <i class="fa fa-car"></i>
+            <p>{{story.title}}</p>
+            <span flex></span>
+            <md-button class="md-fab md-mini md-accent">
+              {{story.story_point ? story.story_point : '?'}}
+            </md-button>
+            </div>
+          </md-list-item>
+        </md-list>
+      </div>
+    </md-content>
+  </md-sidenav>
+
 
   <md-content class="full-height" layout="column" flex>
 
@@ -10,18 +43,34 @@
 
       <md-content class="md-padding" flex>
 
-        <md-card class="md-padding">
-          Ticket Details
+        <md-card class="md-padding" layout="row" layout-align="start center">
+          <div layout="column" flex>
+            <h1>{{selectedStory.title}}</h1>
+            <p>{{selectedStory.description}}</p>
+          </div>
+          <div ng-show="userInfo.role == 'moderator'">
+            <md-button ng-click="setStoryPoint()" class="md-whiteframe-z5 md-fab md-mini md-primary">
+              <i class="fa fa-bars"></i>
+            </md-button>
+            <md-button ng-click="resetCards()" class="md-whiteframe-z5 md-fab md-mini md-primary">
+              <i class="fa fa-car"></i>
+            </md-button>
+            <md-button ng-click="flipCard()" class="md-whiteframe-z5 md-fab md-mini md-primary">
+              <i class="fa fa-home"></i>
+            </md-button>
+          </div>
         </md-card>
 
         <md-card class="md-padding">
 
-          <md-grid-list ng-click="selectCard()"
+          <md-grid-list
           md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
           md-row-height-gt-md="1:1" md-row-height="2:2"
           md-gutter="12px" md-gutter-gt-sm="8px" >
-            <md-grid-tile class="accent" ng-repeat="item in [1,2,3,4,5,6,7,8]"
+            <md-grid-tile class="text primary" ng-repeat="item in [0,0.5,1,2,3,5,8,13,20,40,100]"
+                          ng-click="selectCard(item)"
                           md-rowspan="1" md-colspan="1">
+              {{item}}
             </md-grid-tile>
           </md-grid-list>
 
@@ -31,20 +80,25 @@
 
       <md-sidenav class="md-sidenav-right md-whiteframe-z2"
                   md-component-id="right" md-is-locked-open="true">
-        <md-toolbar layout="row" layout-align="start center">
+        <md-toolbar class="md-whiteframe-z1" layout="row" layout-align="start center">
           <i class="fa fa-user md-padding"></i>
           <h1 class="md-toolbar-tools">Participants</h1>
         </md-toolbar>
         <md-content layout-padding>
-          <md-list class="primary-text sidenav-list">
+
+          <md-list class="primary-text">
 
             <md-list-item class="md-2-line" ng-repeat="user in users" flex>
+
               <img ng-src="{{user.image_url}}" class="md-avatar" alt="{{user.name}}" />
               <div layout="row" flex>
                 <h3>{{user.name}}</h3>
                 <span flex></span>
-                <md-button class="md-fab md-mini md-accent">
-                  7
+                <md-button ng-hide="cardsFlipped" ng-class="user.holding_card == null ? 'not-taken' : 'taken' " class="md-icon-button">
+                  <i class="fa fa-circle"></i>
+                </md-button>
+                <md-button ng-show="cardsFlipped" class="md-fab md-mini md-accent">
+                  {{user.holding_card}}
                 </md-button>
               </div>
             </md-list-item>

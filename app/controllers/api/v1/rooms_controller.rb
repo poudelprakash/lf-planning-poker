@@ -45,14 +45,16 @@ class Api::V1::RoomsController < ApplicationController
     room = Room.find(params[:id])
     card_value = params[:card]
     @user.update!(holding_card: card_value)
-    Pusher["room#{room.id}"].trigger('user_id', @user.id)
     render json: "updated holding card"
+    Pusher["room#{room.id}"].trigger('user_id', room.users.to_json)
   end
 
   def flip_card
     room = Room.find(params[:id])
-    Pusher["room#{room.id}"].trigger('card_values', room.users.all.to_json)
     render json: 'cards displayed'
+    if @user.moderator?
+      Pusher["room#{room.id}"].trigger('card_values', room.users.to_json)
+    end
   end
 
   def reset_cards
