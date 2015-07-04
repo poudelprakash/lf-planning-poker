@@ -8,6 +8,7 @@ Rails.application.routes.draw do
           get :hold_card
           resources :stories do
             member do
+              get :update_index
               get :assign_point
             end
           end

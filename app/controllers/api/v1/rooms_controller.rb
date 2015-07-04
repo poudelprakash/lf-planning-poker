@@ -67,6 +67,11 @@ class Api::V1::RoomsController < ApplicationController
     render json: 'cards reset completed'
   end
 
+  def update_index
+    id = params[:storyIndex]
+    Pusher["room#{room.id}"].trigger('story_index_changed', {index: id})
+  end
+
   private
   def room_params
     params.require(:room).permit(:name)
