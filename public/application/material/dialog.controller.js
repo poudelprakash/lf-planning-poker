@@ -17,7 +17,7 @@
   DialogController.$inject = ['$scope', '$mdDialog'];
 
   angular
-  .module('testTemplate')
+  .module('planningPoker')
   .controller('DialogController', DialogController)
 
 })();

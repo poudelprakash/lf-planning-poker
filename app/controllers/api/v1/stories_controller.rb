@@ -1,5 +1,4 @@
 class Api::V1::StoriesController < ApplicationController
-  belongs_to :room
 
   def index
     room = Room.find(params[:id])

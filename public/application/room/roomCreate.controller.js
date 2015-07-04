@@ -1,13 +1,14 @@
 ;(function(){
   "use strict";
 
-  var RoomCreateController = function($scope, $state, RoomFactory) {
+  var RoomCreateController = function($scope, $state, $localStorage, RoomFactory) {
 
-    $scope.room = {};
+    $scope.roomInfo = {};
 
     $scope.createRoom= function() {
-      RoomFactory.createRoom($scope.room)
+      RoomFactory.createRoom($scope.roomInfo)
       .success(function() {
+        $localStorage.userInfo.role = 'moderator';
         $state.go('lobby');
       })
       .error(function() {
@@ -16,7 +17,7 @@
     };
 
   };
-  RoomCreateController.$inject = ['$scope', '$state', 'RoomFactory'];
+  RoomCreateController.$inject = ['$scope', '$state', '$localStorage', 'RoomFactory'];
 
   angular
   .module('planningPoker')
