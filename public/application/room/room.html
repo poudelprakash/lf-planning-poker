@@ -22,7 +22,7 @@
           <md-list-item ng-repeat="story in stories track by $index" ng-class="{'active': ($index == selectedStoryIndex)}" ng-click="changeStory($index)" flex>
             <div layout="row" layout-align="start center" flex>
             <i class="fa fa-car"></i>
-            <p>{{story.title}}</p>
+            <p>{{story.key}}</p>
             <span flex></span>
             <md-button class="md-fab md-mini md-accent">
               {{story.story_point ? story.story_point : '?'}}
@@ -49,7 +49,7 @@
             <p>{{selectedStory.description}}</p>
           </div>
           <div ng-show="userInfo.role == 'moderator'">
-            <md-button ng-click="setStoryPoint()" class="md-whiteframe-z5 md-fab md-mini md-primary">
+            <md-button ng-click="confirmStoryPoint($event)" class="md-whiteframe-z5 md-fab md-mini md-primary">
               <i class="fa fa-bars"></i>
             </md-button>
             <md-button ng-click="resetCards()" class="md-whiteframe-z5 md-fab md-mini md-primary">
