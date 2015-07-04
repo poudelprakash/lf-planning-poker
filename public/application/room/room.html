@@ -21,7 +21,7 @@
         <md-list class="text sidenav-list md-padding">
           <md-list-item ng-repeat="story in stories track by $index" ng-class="{'active': ($index == selectedStoryIndex)}" ng-click="changeStory($index)" flex>
             <div layout="row" layout-align="start center" flex>
-            <i class="fa fa-car"></i>
+            <i class="fa fa-gear"></i>
             <p>{{story.key}}</p>
             <span flex></span>
             <md-button class="md-fab md-mini md-accent">
@@ -50,13 +50,13 @@
           </div>
           <div ng-show="userInfo.role == 'moderator'">
             <md-button ng-click="confirmStoryPoint($event)" class="md-whiteframe-z5 md-fab md-mini md-primary">
-              <i class="fa fa-bars"></i>
+              <i class="fa fa-clipboard "></i>
             </md-button>
             <md-button ng-click="resetCards()" class="md-whiteframe-z5 md-fab md-mini md-primary">
-              <i class="fa fa-car"></i>
+              <i class="fa fa-refresh"></i>
             </md-button>
             <md-button ng-click="flipCard()" class="md-whiteframe-z5 md-fab md-mini md-primary">
-              <i class="fa fa-home"></i>
+              <i class="fa fa-youtube-play"></i>
             </md-button>
           </div>
         </md-card>

@@ -27,6 +27,7 @@ md-toolbar {
 
 .sidenav-list md-list-item:hover {
   background: #9E9E9E;
+  color: #212121;
 }
 
 .sidenav-list md-list-item.active {
@@ -39,4 +40,9 @@ md-toolbar {
 
 .taken i{
   color: green;
+}
+
+.logo-image {
+  height:35px;
+  margin-left: 20px;
 }

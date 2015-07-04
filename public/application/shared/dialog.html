@@ -12,10 +12,11 @@
     <md-dialog-content>
       <div layout="column">
         Please enter the finalized story point
-        <md-input-container flex>
-          <label>Story Points</label>
-          <input ng-model="finalStoryPoint">
-        </md-input-container>
+     <md-select ng-model="finalStoryPoint">
+       <md-option class="light-primary" ng-repeat="number in [0,1,2,3,5,8,13,20,40,100]" value="{{number}}">
+         {{number}}
+       </md-option>
+     </md-select>
       </div>
     </md-dialog-content>
     <div class="md-actions" layout="row" layout-align="center end">
