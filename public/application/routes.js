@@ -2,7 +2,7 @@
 (function () {
   "use strict";
   angular
-  .module("testTemplate")
+  .module("planningPoker")
 
   .config(function ($stateProvider, $urlRouterProvider) {
 

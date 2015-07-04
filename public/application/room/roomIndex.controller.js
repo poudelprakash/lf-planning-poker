@@ -125,7 +125,7 @@
   RoomController.$inject = ['$scope', '$stateParams', '$localStorage', '$mdDialog', 'RoomFactory'];
 
   angular
-  .module('testTemplate')
+  .module('planningPoker')
   .controller('RoomController', RoomController)
 
 })()
