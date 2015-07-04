@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  
+
   def assign_point
     story = Story.find(params[:id])
     story_point = params[:story_point]
