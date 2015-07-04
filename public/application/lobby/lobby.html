@@ -1,14 +1,12 @@
-<section class="full-height" layout="row" flex>
-
-  <div class="full-height" data-ng-include src="'application/shared/sideNav/sideNav.html'"></div>
-
-  <md-content class="full-height" layout="column" flex>
+<section class="full-height" layout="column" flex>
 
     <div ng-include layout="column" src="'application/shared/header/header.html'"></div>
 
-    <md-content class="light-primary md-padding" layout="column" flex>
+    <md-content ng-show="projects" class="light-primary md-padding" layout="row" layout-align="center start" flex>
 
-        <md-card class="accent" layout="row" layout-align="center center">
+      <div layout="column" flex flex-sm="100" flex-gt-sm="95" flex-gt-md="80" class="md-padding">
+
+        <md-card class="accent" layout="row" layout-align="center center" flex>
           <h2 class="md-title md-padding">
             Projects
           </h2>
@@ -18,16 +16,12 @@
           </md-button>
         </md-card>
 
-        <md-list class="md-padding">
-          <md-list-item ng-repeat="project in projects">
-            <img alt="{{ person.name }}" src="asd" class="md-avatar" />
-            <p>{{project.name}}</p>
-            <i class="fa fa-car" class="md-secondary md-hue-3"></i>
-          </md-list-item>
-        </md-list>
+        <md-card class="md-padding"  ng-repeat="project in projects" ng-click="goToRoom(project.id)">
+          <p>{{project.name}}</p>
+        </md-card>
+
+        </div>
 
     </md-content>
-
-  </md-content>
 
 </section>

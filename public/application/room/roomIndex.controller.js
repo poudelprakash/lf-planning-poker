@@ -3,8 +3,6 @@
 
   var RoomController = function($scope, $stateParams, RoomFactory) {
 
-    $scope.users = [];
-
     RoomFactory.getRoomDetails($stateParams.roomId)
     .success(function(data) {
       $scope.users = data;
