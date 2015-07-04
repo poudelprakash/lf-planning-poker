@@ -12,17 +12,22 @@
 
       <div layout="column" layout-align="center center">
         <md-list-item class="md-2-line">
-          <img ng-src="adasd" class="md-avatar" alt="{{item.who}}" />
+          <img ng-src="userInfo.image_url" class="md-avatar" />
         </md-list-item>
-        <p class="text">Sudhir Shrestha</p>
+        <p class="text">{{userInfo.name}}</p>
       </div>
 
       <div layout="column">
-        <md-list class="text sidenav-list">
-          <md-list-item class="active" ng-repeat="story in stories">
+        <md-list class="text sidenav-list md-padding">
+          <md-list-item ng-repeat="story in stories track by $index" ng-class="{'active': ($index == selectedStoryIndex)}" ng-click="changeStory($index)" flex>
+            <div layout="row" layout-align="start center" flex>
             <i class="fa fa-car"></i>
-            <p>story</p>
-            <md-divider></md-divider>
+            <p>{{story.title}}</p>
+            <span flex></span>
+            <md-button class="md-fab md-mini md-accent">
+              {{story.story_point ? story.story_point : '?'}}
+            </md-button>
+            </div>
           </md-list-item>
         </md-list>
       </div>
@@ -39,14 +44,18 @@
       <md-content class="md-padding" flex>
 
         <md-card class="md-padding" layout="row" layout-align="start center">
-          Ticket Details
-          <span flex></span>
-          <md-button ng-click="resetCards()" class="md-fab md-mini md-primary">
-            <i class="fa fa-car"></i>
-          </md-button>
-          <md-button ng-click="flipCard()" class="md-fab md-mini md-primary">
-            <i class="fa fa-home"></i>
-          </md-button>
+          <div layout="column" flex>
+            <h1>{{selectedStory.title}}</h1>
+            <p>{{selectedStory.description}}</p>
+          </div>
+          <div ng-show="userInfo.role == 'moderator'">
+            <md-button ng-click="resetCards()" class="md-fab md-mini md-primary">
+              <i class="fa fa-car"></i>
+            </md-button>
+            <md-button ng-click="flipCard()" class="md-fab md-mini md-primary">
+              <i class="fa fa-home"></i>
+            </md-button>
+          </div>
         </md-card>
 
         <md-card class="md-padding">
@@ -55,7 +64,7 @@
           md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
           md-row-height-gt-md="1:1" md-row-height="2:2"
           md-gutter="12px" md-gutter-gt-sm="8px" >
-            <md-grid-tile class="accent" ng-repeat="item in [1,2,3,5,8,13,20]"
+            <md-grid-tile class="accent" ng-repeat="item in [0,0.5,1,2,3,5,8,13,20,40,100]"
                           ng-click="selectCard(item)"
                           md-rowspan="1" md-colspan="1">
               {{item}}
@@ -74,7 +83,7 @@
         </md-toolbar>
         <md-content layout-padding>
 
-          <md-list class="primary-text sidenav-list">
+          <md-list class="primary-text">
 
             <md-list-item class="md-2-line" ng-repeat="user in users" flex>
 

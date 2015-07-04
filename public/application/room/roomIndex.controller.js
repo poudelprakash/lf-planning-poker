@@ -1,8 +1,11 @@
 ;(function(){
   "use strict";
 
-  var RoomController = function($scope, $stateParams, RoomFactory) {
+  var RoomController = function($scope, $stateParams, $localStorage, RoomFactory) {
 
+    $scope.userInfo = $localStorage.userInfo;
+    $scope.selectedStoryIndex = 0;
+    $scope.selectedStory = '';
     $scope.users = [];
 
     RoomFactory.getRoomDetails($stateParams.roomId)
@@ -16,11 +19,16 @@
     RoomFactory.getStories($stateParams.roomId)
     .success(function(data) {
       $scope.stories = data;
-      console.log(data)
+      $scope.selectedStory = $scope.stories[$scope.selectedStoryIndex];
     })
     .error(function(){
       //TODO: FIX ERROR HERE
     })
+
+    $scope.changeStory = function(index) {
+      $scope.selectedStoryIndex = index;
+      $scope.selectedStory = $scope.stories[index];
+    };
 
     $scope.selectCard = function(selectedCard) {
       RoomFactory.selectCard($stateParams.roomId, selectedCard)
@@ -91,7 +99,7 @@
     });
 
   };
-  RoomController.$inject = ['$scope', '$stateParams', 'RoomFactory'];
+  RoomController.$inject = ['$scope', '$stateParams', '$localStorage', 'RoomFactory'];
 
   angular
   .module('testTemplate')
